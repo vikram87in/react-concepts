@@ -1,0 +1,9 @@
+We have a functional component 'StaleValues'. In the useeffect, we add an eventlistener only once (by using [] as the dependency array). the eventlistener will be removed only when the component will be unmounted. When we click anywhere else than the button, the value in the console log doesn't change and stays 0. Even when we click on the button, the UI shows the updated count value but the console log still shows 0.
+
+This happens because when fun is defined, it captures the current value of count from its surrounding scope, which is 0 at the time of the initial render. Even though we're updating count in the component by clicking the button, fun still holds the initial value of count because it hasn't been redefined after the initial render. 
+
+We can fix the issue by adding the count variable in the dependency array. This way, when the count changes, the component rerenders and the useeffect is run again, thereby redefining the function 'fun' again and also adding eventlistener afresh.
+
+Note that even with this approach, we are adding and removing the eventlisteners multiple times which could lead to problems sometime. We can update the code so that it doesn't happen that way. Example shown in 'StaleValuesFix' component. We made use of useRef hook here. By using updated value of countRef, we are able to get the latest value of count. 
+
+The key difference between 'count' and 'countRef' is that while 'count' is a value that can change between renders and fun captures a specific value of count (that was set initially to 0), countRef.current is a persistent property of an object that's the same across all renders, so fun can access the up-to-date count value by referencing countRef.current.

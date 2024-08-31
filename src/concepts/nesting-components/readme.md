@@ -1,0 +1,3 @@
+We have defined *AnotherComponent* inside *IncorrectApproach*. When a user types something and clicks the button, the text is reset. This happens because each time *IncorrectApproach* re-renders (which happens every time the count state changes), *AnotherComponent* is _redefined_, which leads React to unmount the old AnotherComponent and mount a new one. This, in turn, resets its state and triggers the useEffect logs.
+
+To avoid this, define *AnotherComponent* outside *IncorrectApproach*. This is a fundamental part of React's design: a component should be defined once and then instantiated multiple times with the JSX syntax (<Component />).

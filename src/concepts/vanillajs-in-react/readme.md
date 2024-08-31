@@ -1,0 +1,1 @@
+The code in ***IncorrectApproach.jsx*** shows that sometimes people can write vanilla js code in a react component. This code does not take full advantage of the react functionality and infact fights with react on the control over DOM. ***CorrectApproach.jsx*** shows how to write the code in the correct way.

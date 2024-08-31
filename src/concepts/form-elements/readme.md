@@ -1,0 +1,3 @@
+We have demonstrated how a form element is used to group multiple inputs and a submit button. If there is a submit button inside a form (even though it is hidden), and the focus is on the button or any text input, the onSubmit handler will be called and the form data is posted to a url that is provided in the 'action' with the method that is provide in the 'method'. By default the data is posted to the current url with GET method. The default behaviour also includes reloading the page, which we would want to prevent for a SPA and hence we used e.preventDefault()
+
+On a side note, the data that is posted takes the form of a key-value. key is the 'name' attribute of the element and value is the 'value' attribute
