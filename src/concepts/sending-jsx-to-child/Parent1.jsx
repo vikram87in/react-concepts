@@ -74,4 +74,4 @@ export default function Parent1() {
       {inputComponent()}
     </div>
   );
-};
+}

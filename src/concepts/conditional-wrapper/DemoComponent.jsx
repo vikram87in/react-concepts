@@ -1,5 +1,5 @@
-import React from 'react'
-import ConditionalWrapper from './ConditionalWrapper'
+import React from 'react';
+import ConditionalWrapper from './ConditionalWrapper';
 
 const DemoComponent = () => {
   return (
@@ -9,7 +9,7 @@ const DemoComponent = () => {
         <div>Wrapped in div</div>
         <div>Wrapped in div too</div>
       </ConditionalWrapper>
-    </>)
-}
+    </>);
+};
 
-export default DemoComponent
+export default DemoComponent;

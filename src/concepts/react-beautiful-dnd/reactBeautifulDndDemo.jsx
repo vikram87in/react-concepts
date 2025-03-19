@@ -9,13 +9,13 @@ display: flex
 
 const ReactBeautifulDndDemo = () => {
 
-  const [tasks, setTasks] = useState(initialData.tasks)
-  const [columns, setColumns] = useState(initialData.columns)
-  const [columnOrder, setColumnOrder] = useState(initialData.columnOrder)
+  const [tasks, setTasks] = useState(initialData.tasks);
+  const [columns, setColumns] = useState(initialData.columns);
+  const [columnOrder, setColumnOrder] = useState(initialData.columnOrder);
   
   const onDragEnd = () => {
     console.log('ondrag..');
-  }
+  };
 
   return <DragDropContext onDragEnd={onDragEnd}>
     <StyledContainer>
@@ -23,11 +23,11 @@ const ReactBeautifulDndDemo = () => {
         columnOrder.map(columnId => {
           const column = columns[columnId];
           const columnTasks = column.taskIds.map(taskId => tasks[taskId]);
-          return <Column key={column.id} column={column} tasks={columnTasks} />
+          return <Column key={column.id} column={column} tasks={columnTasks} />;
         })
       }
     </StyledContainer>
-  </DragDropContext>
-}
+  </DragDropContext>;
+};
 
-export default ReactBeautifulDndDemo
+export default ReactBeautifulDndDemo;

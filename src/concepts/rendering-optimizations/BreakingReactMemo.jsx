@@ -71,5 +71,5 @@ const PureChildFunction = React.memo(function PureChildFunction(props) {
   return (
     <div>PureChildFunction</div>
   );
-})
+});
 

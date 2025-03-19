@@ -18,6 +18,6 @@ const initialData = {
     }
   },
   columnOrder: ['column-1', 'column-2']
-}
+};
 
 export default initialData;

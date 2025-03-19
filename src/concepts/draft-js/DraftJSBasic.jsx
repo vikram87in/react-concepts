@@ -13,8 +13,8 @@ export default function DraftJSBasic() {
       return 'bold';
     }
     console.log('>> key: ', getDefaultKeyBinding(e));
-    return getDefaultKeyBinding(e)
-  }
+    return getDefaultKeyBinding(e);
+  };
 
   const handleKeyCommand = (command, editorState) => {
     console.log('>> handlekeycommand: ', command, editorState);
@@ -26,10 +26,9 @@ export default function DraftJSBasic() {
     }
 
     return 'not-handled';
-  }
+  };
 
   const handleConvert = (e) => {
-    debugger;
     // const x = convertFromRaw(editorState);
     const y = editorState.getCurrentContent();
     const z = y.getPlainText();
@@ -45,7 +44,7 @@ export default function DraftJSBasic() {
     // this.state = {
     //   editorState: EditorState.createWithContent(state),
     // };
-  }
+  };
 
   // function myBlockStyleFn(contentBlock) {
   //   const type = contentBlock.getType();
@@ -70,7 +69,7 @@ export default function DraftJSBasic() {
         <button className='' onClick={handleConvert}>Convert</button>
       </div>
     </>
-  )
+  );
 }
 
 

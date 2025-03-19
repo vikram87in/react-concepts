@@ -19,11 +19,11 @@ const Task = ({ content, id, index }) => {
         (provided) => {
           return <StyledTaskDiv {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
             {content}
-          </StyledTaskDiv>
+          </StyledTaskDiv>;
         }
       }
     </Draggable>
-  )
-}
+  );
+};
 
-export default Task
+export default Task;

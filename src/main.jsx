@@ -40,8 +40,11 @@ import './index.css';
 // import ReactBeautifulDndDemo from './concepts/react-beautiful-dnd/reactBeautifulDndDemo';
 // import DemoComponent from './concepts/conditional-wrapper/DemoComponent';
 // import UpdaterFunction from './concepts/usestate-scenarios/UpdaterFunction.jsx';
-import DummyApi from './concepts/dummy-api-call/DummyApi.jsx';
+// import DummyApi from './concepts/dummy-api-call/DummyApi.jsx';
+// import DemoComponent from './concepts/usestate-with-function-parameter/DemoComponent.jsx';
+// import DemoComponent from './concepts/animate-hide-remove-from-dom/DemoComponent.jsx';
 // import DraftJSBasic from './concepts/draft-js/DraftJSBasic.jsx';
+import VoiceInputForm from './concepts/voice-to-text/basic-voice-to-text.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <DummyApi/>
+  <VoiceInputForm/>
 );
