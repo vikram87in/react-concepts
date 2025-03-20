@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import './VoiceInputForm.css'; // Import CSS for styling
 
@@ -15,26 +14,42 @@ const VoiceInputForm = () => {
   const [isRecognitionSupported, setIsRecognitionSupported] = useState(false);
   const [isSpeechSynthesisSupported, setIsSpeechSynthesisSupported] = useState(false);
 
-  const recognitionRef = useRef(null);
+  const recognitionRef = useRef(null); // Store a single recognition instance
   const utteranceRef = useRef(null);
 
   useEffect(() => {
-    setIsRecognitionSupported('webkitSpeechRecognition' in window || 'SpeechRecognition' in window);
+    // Check for browser support
+    const isSupported = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
+    setIsRecognitionSupported(isSupported);
     setIsSpeechSynthesisSupported('speechSynthesis' in window);
+
+    if (isSupported) {
+      // Create a single SpeechRecognition instance
+      const RecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new RecognitionAPI();
+      recognition.continuous = false; // default
+      recognition.interimResults = false; // default
+      recognition.lang = 'en-US';
+
+      // Store the instance in the ref
+      recognitionRef.current = recognition;
+
+      // Cleanup on component unmount
+      return () => {
+        recognition.onend = null;
+        recognition.onresult = null;
+        recognition.onerror = null;
+        recognitionRef.current = null;
+      };
+    }
   }, []);
 
   // Function to start speech recognition for a specific field
   const startListening = (field) => {
-    if (!isRecognitionSupported) return;
+    if (!isRecognitionSupported || !recognitionRef.current || listeningField) return;
 
-    const RecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new RecognitionAPI();
-    recognition.continuous = false; // default
-    recognition.interimResults = false; // default
-    recognition.lang = 'en-US';
-
-    recognitionRef.current = recognition;
-
+    const recognition = recognitionRef.current;
+    // Set up event listeners
     recognition.onstart = () => setListeningField(field);
 
     recognition.onresult = (event) => {
@@ -42,10 +57,16 @@ const VoiceInputForm = () => {
       setFormData((prev) => ({ ...prev, [field]: text }));
     };
 
-    recognition.onerror = (event) => console.error('Speech recognition error:', event.error);
+    recognition.onerror = (event) => {
+      console.error('Speech recognition error:', event.error);
+      setListeningField(null);
+    };
 
-    recognition.onend = () => setListeningField(null);
+    recognition.onend = () => {
+      setListeningField(null);
+    };
 
+    // Start recognition
     recognition.start();
   };
 
@@ -86,6 +107,7 @@ const VoiceInputForm = () => {
           <button
             className={`icon-btn ${listeningField === 'name' ? 'active' : ''}`}
             onClick={() => startListening('name')}
+            disabled={listeningField && listeningField != 'name'}
           >
             🎤
           </button>
@@ -104,6 +126,7 @@ const VoiceInputForm = () => {
           <button
             className={`icon-btn ${listeningField === 'email' ? 'active' : ''}`}
             onClick={() => startListening('email')}
+            disabled={listeningField && listeningField != 'email'}
           >
             🎤
           </button>
@@ -122,6 +145,7 @@ const VoiceInputForm = () => {
           <button
             className={`icon-btn ${listeningField === 'experience' ? 'active' : ''}`}
             onClick={() => startListening('experience')}
+            disabled={listeningField && listeningField != 'experience'}
           >
             🎤
           </button>
@@ -142,6 +166,7 @@ const VoiceInputForm = () => {
           <button
             className={`icon-btn ${listeningField === 'bio' ? 'active' : ''}`}
             onClick={() => startListening('bio')}
+            disabled={listeningField && listeningField != 'bio'}
           >
             🎤
           </button>

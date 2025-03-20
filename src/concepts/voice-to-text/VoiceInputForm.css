@@ -54,7 +54,7 @@
     transition: transform 0.2s ease;
   }
   
-  .icon-btn:hover {
+  .icon-btn:hover:not(:disabled) {
     transform: scale(1.2);
   }
   
