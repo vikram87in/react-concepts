@@ -62,6 +62,7 @@ const ResumeChatBot = () => {
     if (!isSpeechSynthesisSupported || mutedRef.current) return;
 
     const utterance = new SpeechSynthesisUtterance(question);
+    utterance.lang =  'en-US'; // Set the language for the speech synthesis
     // Event triggered when the speech synthesis is finished
     utterance.onend = () => {
       console.log('Speech synthesis completed.');
@@ -119,7 +120,7 @@ const ResumeChatBot = () => {
             <p className="question">{fields[currentFieldIndex].question}</p>
 
             <input
-              type="email"
+              type={fields[currentFieldIndex].type}
               value={formData[fields[currentFieldIndex].id] || ''}
               onChange={handleInputChange}
               placeholder={fields[currentFieldIndex].placeholder}
