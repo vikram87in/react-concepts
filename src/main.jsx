@@ -44,7 +44,8 @@ import './index.css';
 // import DemoComponent from './concepts/usestate-with-function-parameter/DemoComponent.jsx';
 // import DemoComponent from './concepts/animate-hide-remove-from-dom/DemoComponent.jsx';
 // import DraftJSBasic from './concepts/draft-js/DraftJSBasic.jsx';
-import VoiceInputForm from './concepts/voice-to-text/basic-voice-to-text.jsx';
+// import VoiceInputForm from './concepts/voice-to-text/basic-voice-to-text.jsx';
+import ResumeChatBot from './concepts/voice-to-text/conversational-resume-builder.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <VoiceInputForm/>
+  <ResumeChatBot/>
 );
