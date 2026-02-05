@@ -32,6 +32,36 @@ export default Index;
 // }
 
 
+
+
+// // Unmounting resets state
+// function Counter() {
+//   const [show, setShow] = useState(true);
+
+//   return (
+//     <>
+//       <button onClick={() => setShow(!show)}>
+//         Toggle
+//       </button>
+
+//       {show && <Counter1 />}
+//     </>
+//   );
+// }
+
+// function Counter1() {
+//   const [count, setCount] = useState(0);
+
+//   return (
+//     <button onClick={() => setCount(count + 1)}>
+//       Count: {count}
+//     </button>
+//   );
+// }
+
+
+
+
 // // Normal variable behaviour vs state variable behaviour
 // function Counter() {
 //   const [count, setCount] = useState(0);
@@ -48,6 +78,9 @@ export default Index;
 //     </button>
 //   );
 // }
+
+
+
 
 
 // // Directly mutating state variable; setState replaces the state variable with the new value instead of merging it like in class components
@@ -73,6 +106,9 @@ export default Index;
 //     </>
 //   );
 // }
+
+
+
 
 // // Initializer function in useState
 // function Counter() {
@@ -107,24 +143,134 @@ export default Index;
 // }
 
 
-// State updates are batched and Async; Calls for Updater function
-function Counter() {
-  const [count, setCount] = useState(0);
 
-  const handleClick = () => {
-    setCount(count + 1);
-    console.log('>> count: ', count);
-    setCount(count + 1);
-    setCount(count + 1);
-  };
 
-  return (
-    <>
-      <button onClick={handleClick}>
-        Increment by 3
-      </button>
-      <br /><br /><br />
-      Count:{count}
-    </>
-  );
-}
+
+// // State updates are batched and Async; Calls for Updater function
+// function Counter() {
+//   const [count, setCount] = useState(0);
+
+//   const handleClick = () => {
+//     setCount(count + 1);
+//     console.log('>> count: ', count);
+//     setCount(count + 1);
+//     setCount(count + 1);
+//   };
+
+//   return (
+//     <>
+//       <button onClick={handleClick}>
+//         Increment by 3
+//       </button>
+//       <br /><br /><br />
+//       Count:{count}
+//     </>
+//   );
+// }
+
+
+
+
+
+// // Different components at same position don't retain state;
+// function Counter() {
+//   const [isPerson, setIsPerson] = useState(true);
+
+//   return (
+//     <>
+//       <button onClick={() => setIsPerson(!isPerson)}>
+//         Switch Component
+//       </button>
+
+//       {/* DIFFERENT components at same position */}
+//       {isPerson ? (
+//         <PersonCounter />
+//       ) : (
+//         <AnimalCounter />
+//       )}
+//     </>
+//   );
+// }
+
+// function PersonCounter() {
+//   const [count, setCount] = useState(0);
+//   return <button onClick={() => setCount(c => c + 1)}>Person: {count}</button>;
+// }
+
+// function AnimalCounter() {
+//   const [count, setCount] = useState(0);
+//   return <button onClick={() => setCount(c => c + 1)}>Animal: {count}</button>;
+// }
+
+
+
+
+// // Same component at same position retains state;
+// function Counter() {
+//   const [isRed, setIsRed] = useState(true);
+
+//   return (
+//     <>
+//       <button onClick={() => setIsRed(!isRed)}>
+//         Toggle Color
+//       </button>
+
+//       {/* Same component (Counter1), same position (first child) */}
+//       {isRed ? (
+//         <Counter1 color="red" />
+//       ) : (
+//         <Counter1 color="blue" />
+//       )}
+//     </>
+//   );
+// }
+
+// function Counter1({ color }) {
+//   const [count, setCount] = useState(0);
+
+//   return (
+//     <button onClick={() => setCount(c => c + 1)} style={{ color }}>
+//       Count: {count}
+//     </button>
+//   );
+// }
+
+
+
+
+
+
+// // Force state reset with key prop
+// function Counter() {
+//   const [resetKey, setResetKey] = useState(0);
+//   const [color, setColor] = useState('red');
+
+//   return (
+//     <>
+//       <button onClick={() => setColor(color === 'red' ? 'blue' : 'red')}>
+//         Toggle Color (State Preserved)
+//       </button>
+//       <button onClick={() => setResetKey(k => k + 1)}>
+//         Reset Counter (Change Key)
+//       </button>
+//       <br /><br />
+//       {/* Changing key forces React to unmount and remount */}
+//       <Counter1 color={color} key={resetKey} />
+//     </>
+//   );
+// }
+
+// function Counter1({ color }) {
+//   const [count, setCount] = useState(0);
+
+//   useEffect(() => {
+//     console.log('Counter1 mounted!');
+//     return () => console.log('Counter1 unmounted!');
+//   }, []);
+
+//   return (
+//     <button onClick={() => setCount(c => c + 1)} style={{ color }}>
+//       Count: {count}
+//     </button>
+//   );
+// }
