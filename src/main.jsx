@@ -45,7 +45,9 @@ import './index.css';
 // import DemoComponent from './concepts/animate-hide-remove-from-dom/DemoComponent.jsx';
 // import DraftJSBasic from './concepts/draft-js/DraftJSBasic.jsx';
 // import VoiceInputForm from './concepts/voice-to-text/basic-voice-to-text.jsx';
-import ResumeChatBot from './concepts/voice-to-text/conversational-resume-builder.jsx';
+// import ResumeChatBot from './concepts/voice-to-text/conversational-resume-builder.jsx';
+// import EditableDiv from './concepts/contenteditable/basic-content-editable.jsx';
+import Index from './concepts/useState/index.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ResumeChatBot/>
+  <Index />
 );
