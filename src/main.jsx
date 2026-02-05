@@ -1,4 +1,5 @@
-import React from 'react';
+//#region imports
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import './init.js';
 // import App from './App.jsx'
@@ -48,6 +49,10 @@ import './index.css';
 // import ResumeChatBot from './concepts/voice-to-text/conversational-resume-builder.jsx';
 // import EditableDiv from './concepts/contenteditable/basic-content-editable.jsx';
 import Index from './concepts/useState/index.jsx';
+//#endregion
+
 ReactDOM.createRoot(document.getElementById('root')).render(
+  // <StrictMode>
   <Index />
+  // </StrictMode>
 );
