@@ -1,1 +1,0 @@
-ReactDOM.createPortal will render the content inside the element with id portal-root. Click on the button so that the component is re-rendered.
